@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.w {
+    width: 1920px;
+    margin: auto;
+}
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+}
+
+.header{
+    height:35px;
+    margin:30px auto;
+}
+
+.logo {
+    float:left;
+    width: 234px;
+    height: 80px;
+    background-color:red;
+}
+.nav1{
+    float:left;
+    margin-left:300px;
+}
+.nav1 ul li{
+    float:left;
+}
+.nav1 ul li a{
+    display:block;
+    height:40px;
+    padding: 0 70px;
+    line-height:150px;
+    font-size:22px;
+    color:white; 
+}
+.lgj{
+    height:700px;
+    background: url(ZzgbPHidO379.png);
+}
+.nav2{
+    float:left;
+    margin-left:750px;
+}
+.nav2 ul li{
+    float:left;
+}
+.nav2 ul li a{
+    display: block;
+    height: 60px;
+    padding: 0 70px;
+    line-height: 0;
+    font-size: 22px;
+    color: white;
+}
+.word{
+    float:left;
+    margin-left: 180px;
+    height:700px;
+    width:1003px
+}
+.back2{
+    float:left;
+    height:500px;
+    background: url(hui.png);
+}
+.write{
+    float:left;
+    height:600px;
+    margin:100px 400px;
+    display: flex;
+        gap: 5px;
+}
+.mianban{
+    float:left;
+    background:url(bai.png);
+}
+.mianban h1{
+    font-size: 50px;
+        margin: 5px auto;
+}
+.mianban p{
+    font-size: 25px;
+        margin: 20px 60px;
+}
+.red{
+    float:left;
+    height:250px;
+}
+.xilie{
+    float:left;
+    height:50px;
+    width:1192px;
+    font-size:40px;
+    margin:300px 720px;
+    color:brown;
+}
+.inner{
+    float:left;
+    font-size:25px;
+}
+.inner2{
+    height:300px;
+    margin:auto 190px;
+    float:left;
+    font-size:25px;
+}
+.inner3{
+    height:200px;
+    margin:auto 150px;
+    font-size:25px;
+}
+.liaojie{
+    width:241px;
+    height:400px;
+    margin:900px 800px;
+}
+.twob{
+    width:1920px;
+    height:385px;
+    background:url("twob.png");
+}
+.LA{
+    float:left;
+    height:20px;
+    margin:200px 300px;
+}
+.discuss{
+    margin:-50px 50px;
+}
+.more{
+    height:100px;
+    margin:auto 830px;
+}
+.six{
+    height:300px;
+    margin:auto 475px;
+}
+.buy{
+    margin:400px 810px;
+}
+.bone{
+    float:left;
+    margin:-300px 30px;
+    height:522px;
+    width:1920px;
+    background:url("bone_.png");
+}
+.pen1{
+    float:left;
+    width:383px;
+    height:200px;
+    margin:100px 550px;
+}
+.pen2{
+    float: left;
+        width: 383px;
+        height: 200px;
+        margin: -160px 550px;
+}
+.pen3{
+    float: left;
+        width: 383px;
+        height: 200px;
+        margin: -30px 550px;
+}
+.recommend{
+    margin:700px 900px;
+}
+.end{
+    margin:-600px 30px;
+}
