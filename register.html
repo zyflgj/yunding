@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+</head>
+<body>
+    <div id="root">
+    <h2>请输入账号</h2>
+    <div>
+        <input type="text" id="account">
+    </div>
+    <h2>请输入密码</h2>
+    <div>
+        <input type="text" id="password">
+    </div>
+    <br>
+    <div>
+        <button type="button" id="login">注册</button>
+    </div>
+    <div>
+        <button type="button" id="find2">点击获取用户信息</button>
+    </div>
+    <h2 id="info"></h2>
+    <h2 id="info2"></h2>
+    <div id="root2"></div>
+    </div>
+    <script>
+        const root2 =document.getElementById("root2")
+        const info2 = document.getElementById("info2")
+        const info = document.getElementById("info")
+        const root = document.getElementById("root")
+        const account = document.getElementById("account").value
+        const password = document.getElementById("password").value
+        const login = document.getElementById("login").addEventListener('click', check);
+        const find2 = document.getElementById("find2").addEventListener('click', find3);
+        function check() {
+            //调用fetch
+            fetch("http://43.143.169.168:9090/user/register",{
+                method:"post",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body:JSON.stringify({account, password})
+            }).then(res => {
+                if(!response.ok){
+                    throw new Error("账号或密码错误")
+                }
+                return res.json()
+            })
+            .then((res) => {
+            root.innerHTML = `<h1>注册成功</h1>`})
+            .catch(error => {
+                info.innerHTML = "网络错误"
+            })
+        }
+        function find3() {
+            fetch("http://43.143.169.168:9090/user/all")
+            .then((res) => {
+                if(res.status === 200){
+                    return res.json()
+                }else{
+                    throw new Error("加载失败")
+                }
+            })
+            .then(res => {
+                if(res.status === "ok"){
+                    //创建table
+                    const table = document.createElement("table")
+                    root.appendChild(table)
+                    table.insertAdjacentElement("beforeend", "<caption>列表</caption>")
+                    table.insertAdjacentElement("beforeend", `
+                    <thead>
+                        <tr>
+                            <th>msg</th>
+                            <th>code</th>
+                            <th>data</th>
+                        <tr>
+                    </thead>
+                    `)
+                    const tbody = document.createElement("tbody")
+                    tbody.appendChild(tbody)
+                    //遍历数据
+                    for(let ApifoxModel of res.data){
+                        tbody.insertAdjacentHTML("beforeend", `
+                        <tr>
+                            <td>${ApifoxModel.msg}</td>
+                            <td>${ApifoxModel.code}</td>
+                            <td>${ApifoxModel.data}</td>
+                        </tr>
+                        `)
+                    }
+                }
+            })
+            .catch((err) => {
+                info2.innerHTML = "网络错误"
+            })
+        }
+    </script>
+</body>

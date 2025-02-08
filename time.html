@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取当前时间</title>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <button id="getTimeButton">获取当前时间</button>
+    <script>
+        function getTime() {
+            fetch('http://43.143.169.168:9090/time/now')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络请求失败')
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    const time = data.datetime; 
+                    document.getElementById('clock').innerText = time;
+                })
+                .catch(error => {
+                    console.error('获取时间失败:', error);
+                    document.getElementById('clock').innerText = '无法获取时间';
+                });
+        }
+
+        document.getElementById('getTimeButton').addEventListener('click', getTime);
+    </script>
+</body>
+
+</html>
