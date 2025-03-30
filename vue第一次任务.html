@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>入门vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        .fontColor{
+            color:red;
+        }
+        .list{
+            padding:0;
+        }
+        .list li{
+            margin:5px 0;
+        }
+        .red{
+            color:red;
+        }
+        .warning{
+            color:orange;
+            margin-top: 5px;
+            font-size: larger;
+            font-weight: bolder;
+        }
+        .yes{
+            width:80px;
+            height:30px;
+            border: none;
+            border-radius: 5px;
+            background-color:aqua;
+            font-weight: bold;
+        }
+        .no{
+            width:80px;
+            height:30px;
+            border: none;
+            border-radius: 5px;
+            background-color:red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <label>请输入单词<input type="text" v-model="inputWord" @keyup="show" @keyup.enter="listShow"></label>
+    <p>预览:{{lookWord}}</p>
+    <button @click="update" class="yes">确认</button>
+    <button @click="deleteWord" v-if="wordList.length <= 5" class="yes">删除</button>
+    <button @click="deleteWord" v-if = "wordList.length > 5" class="no">删除</button>
+    <ul :class="{red:wordList.length > 5}" class="list">
+        <li v-for = "(p,index) in wordList" :key="index">{{p}}</li>
+    </ul>
+    <p v-if = "wordList.length > 5" class="warning">单词数目超过5个</p>
+    <p>{{warning}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                warning:"",
+                lookWord:"",
+                inputWord:"",
+                showWord:"",
+                wordList:[]
+            },
+            methods:{
+                show(){
+                    this.lookWord = this.inputWord
+                },
+                listShow(){
+                    this.showWord = this.inputWord;
+                },
+                update(){
+                    if(this.inputWord.trim() !== ""){
+                        this.wordList.push(this.inputWord)
+                        this.inputWord = ""
+                        this.lookWord = ""
+                    }
+                },
+                deleteWord(){
+                    if(this.wordList.length > 0){
+                        this.wordList.pop()
+                    }
+                    else{
+                        this.warning = "没有单词！"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
